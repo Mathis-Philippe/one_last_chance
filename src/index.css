@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    position: relative;
+    overflow-x: hidden;
+    background-color: #000000;
+  }
+
+  /* Les reflets de lumières blancs en arrière-plan */
+  body::before,
+  body::after {
+    content: '';
+    position: fixed;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    /* Augmentation de l'opacité (0.15) pour que ce soit bien visible */
+    background-image:
+      radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 40%),
+      radial-gradient(circle at 70% 60%, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 35%);
+    z-index: 0; /* Placé juste derrière le texte mais devant le fond noir absolu */
+    pointer-events: none; /* Pour ne pas gêner les clics */
+    animation: moveLights 20s infinite alternate ease-in-out;
+    filter: blur(60px);
+    will-change: transform;
+  }
+
+  body::after {
+    background-image:
+      radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 30%);
+    animation-delay: -10s;
+    animation-duration: 15s;
+  }
+
+  @keyframes moveLights {
+    0% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(4%, -5%) scale(1.1);
+    }
+    100% {
+      transform: translate(-2%, 5%) scale(0.95);
+    }
+  }
+}
+
+/* Nouvelles animations de chargement du logo */
+@keyframes logoScreenZoom {
+  0% {
+    transform: scale(3.5); /* Part de TRÈS grand, il prend tout l'écran */
+    filter: blur(10px) grayscale(100%); /* Un léger flou artistique au tout début */
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+    filter: blur(0px) grayscale(100%);
+  }
+  100% {
+    transform: scale(1); /* Revient se positionner parfaitement à sa taille normale */
+    filter: blur(0px) grayscale(100%);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,5 @@
+[
+  { "id": 1, "date": "20 JUIN 2026", "city": "Lille", "venue": "Le Splendid", "status": "" },
+  { "id": 2, "date": "04 JUILLET 2026", "city": "Paris", "venue": "La Boule Noire", "status": "" },
+  { "id": 3, "date": "18 JUILLET 2026", "city": "Bruxelles", "venue": "Ancienne Belgique", "status": "" }
+]
