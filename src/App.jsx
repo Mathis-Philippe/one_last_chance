@@ -736,7 +736,8 @@ export default function App() {
                 <img 
                   src="/7.png" 
                   alt="logo_main" 
-                  className="w-full max-w-[90vw] sm:max-w-[500px] h-auto object-contain filter grayscale transition-all duration-[2000ms] ease-out animate-[logoScreenZoom_2200ms_cubic-bezier(0.16,1,0.3,1)_forwards]" 
+                  className="w-full max-w-[90vw] sm:max-w-[500px] h-auto object-contain filter grayscale animate-[logoScreenZoom_2200ms_cubic-bezier(0.16,1,0.3,1)_forwards]" 
+                  style={{ willChange: 'transform, opacity', transform: 'translateZ(0)' }}
                 />
               </div>
               <p className="text-xs sm:text-sm tracking-[0.4em] text-neutral-400 uppercase pt-4">— Site Officiel —</p>
