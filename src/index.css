@@ -47,6 +47,73 @@
   }
 }
 
+/* ===== Animation de fondu générique (utilisée partout dans l'app) ===== */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fadeIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ===== Apparition des éléments au défilement (scroll reveal) ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ===== Tiroir panier (glissement depuis la droite) ===== */
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+/* ===== Bandeau défilant (marquee) ===== */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: marquee 30s linear infinite;
+}
+
+/* ===== Égaliseur audio animé ===== */
+@keyframes equalize {
+  0%, 100% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+}
+.eq-bar {
+  transform-origin: bottom;
+  animation: equalize 0.9s ease-in-out infinite;
+}
+
+/* ===== Pulsation du point "live" ===== */
+@keyframes livePulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.5); }
+  70% { box-shadow: 0 0 0 8px rgba(255, 255, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+.animate-live-pulse {
+  animation: livePulse 2s infinite;
+}
+
+/* ===== Respect des préférences d'accessibilité ===== */
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .animate-marquee { animation: none; }
+  .animate-fade-in { animation: none; }
+  body::before, body::after { animation: none; }
+}
+
 /* Nouvelles animations de chargement du logo */
 @keyframes logoScreenZoom {
   0% {
